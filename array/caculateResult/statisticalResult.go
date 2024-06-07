@@ -8,11 +8,25 @@ func statisticalResult(arrayA []int) []int {
 		return result
 	}
 	result[0] = 1
+	zeroCount := 0
+	uniqVal := arrayA[0]
 	for i := 1; i <= len(arrayA)-1; i++ {
+		if arrayA[i] == 0 {
+			zeroCount++
+		} else {
+			uniqVal *= arrayA[i]
+		}
 		result[0] *= arrayA[i]
 	}
+	if zeroCount > 1 {
+		return result
+	}
 	for i := 1; i <= len(arrayA)-1; i++ {
-		result[i] = result[i-1] / arrayA[i-1] * arrayA[i]
+		if arrayA[i] != 0 {
+			result[i] = result[i-1] / arrayA[i] * arrayA[i-1]
+		} else {
+			result[i] = uniqVal
+		}
 	}
 	return result
 }
