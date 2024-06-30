@@ -1,4 +1,4 @@
-package findrepeatdocument
+package removeelement
 
 import (
 	"testing"

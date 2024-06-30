@@ -1,4 +1,4 @@
-package findrepeatdocument
+package removeelement
 
 // 设备中存有 n 个文件，文件 id 记于数组 documents。若文件 id 相同，则定义为该文件存在副本。请返回任一存在副本的文件 id。
 // 0 ≤ documents[i] ≤ n-1
