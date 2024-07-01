@@ -7,5 +7,12 @@ package removeelement
 // 请注意 ，必须在不复制数组的情况下原地对数组进行操作。
 
 func moveZeroes(nums []int) {
+	zeroIdx := 0
 
+	for idx := zeroIdx; idx < len(nums); idx++ {
+		if nums[idx] != 0 {
+			nums[idx], nums[zeroIdx] = nums[zeroIdx], nums[idx]
+			zeroIdx++
+		}
+	}
 }
