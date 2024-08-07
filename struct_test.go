@@ -1,26 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"testing"
-
-	"github.com/gz4z2b/algorithm/obj"
 )
 
-type testB struct {
-	*obj.TestObj
-	c string
+type obj struct {
+	test *int
 }
 
-func testObjA(o obj.TestObj) {
-	fmt.Println("obj")
-}
-
-func TestStruct(t *testing.T) {
-	test := testB{
-		TestObj: obj.NewTestObj("a", "b"),
-		c:       "111",
-	}
-	testObjA(*test.TestObj)
-	t.Log(test.EchoA())
+func TestPoint(t *testing.T) {
+	a := []int{1, 2, 3}
+	b := make([]int, len(a))
+	copy(b, a)
+	a[0] = 2
+	t.Log(b[0])
 }

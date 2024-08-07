@@ -1,43 +1,31 @@
 package removeelement
 
-import "math"
-
 // 977. 有序数组的平方
 // 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
 
 func sortedSquares(nums []int) []int {
 	// 先找出中间数
-	idx := len(nums) - 1
-	for ; idx > 0; idx-- {
-		if nums[idx] < 0 {
-			break
-		}
-	}
-	idx++
-	result := []int{
-		int(math.Pow(float64(nums[idx]), 2)),
+	result := make([]int, 0, len(nums))
+	idx := -1
+	for i := 0; i < len(nums) && nums[i] < 0; i++ {
+		idx = i
 	}
 
-	addOffset, minOffset := 1, 1
-	for idx+addOffset <= len(nums) && idx-minOffset >= 0 {
-		minNum := math.Abs(float64(nums[idx+addOffset]))
-		addNum := math.Abs(float64(nums[idx-minOffset]))
-		if minNum < addNum {
-			result = append(result, int(math.Pow(minNum, 2)))
-			minOffset++
+	for slow, fast := idx, idx+1; slow >= 0 || fast < len(nums); {
+		if slow < 0 {
+			result = append(result, nums[fast]*nums[fast])
+			fast++
+		} else if fast >= len(nums) {
+			result = append(result, nums[slow]*nums[slow])
+			slow--
+		} else if nums[fast]*nums[fast] < nums[slow]*nums[slow] {
+			result = append(result, nums[fast]*nums[fast])
+			fast++
 		} else {
-			result = append(result, int(math.Pow(addNum, 2)))
-			addOffset++
+			result = append(result, nums[slow]*nums[slow])
+			slow--
 		}
 	}
-	if idx+addOffset <= len(nums) {
-		for ; idx+addOffset <= len(nums); addOffset++ {
-			result = append(result, int(math.Pow(float64(nums[idx+addOffset]), 2)))
-		}
-	} else {
-		for ; idx-minOffset >= 0; minOffset++ {
-			result = append(result, int(math.Pow(float64(nums[idx-minOffset]), 2)))
-		}
-	}
+
 	return result
 }

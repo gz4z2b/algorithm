@@ -28,6 +28,62 @@ func Test_sortedSquares(t *testing.T) {
 			},
 			want: []int{4, 9, 9, 49, 121},
 		},
+		{
+			name: "示例3",
+			args: args{
+				nums: []int{-7, -3, -2, -1, 1, 2, 3, 11},
+			},
+			want: []int{1, 1, 4, 4, 9, 9, 49, 121},
+		},
+		{
+			name: "示例4",
+			args: args{
+				nums: []int{-7, -3, -2, -1, 1, 11},
+			},
+			want: []int{1, 1, 4, 9, 49, 121},
+		},
+		{
+			name: "示例5",
+			args: args{
+				nums: []int{-7, -3, -2, -1, 1},
+			},
+			want: []int{1, 1, 4, 9, 49},
+		},
+		{
+			name: "示例7",
+			args: args{
+				nums: []int{-1},
+			},
+			want: []int{1},
+		},
+		{
+			name: "示例6",
+			args: args{
+				nums: []int{1},
+			},
+			want: []int{1},
+		},
+		{
+			name: "示例8",
+			args: args{
+				nums: []int{},
+			},
+			want: []int{},
+		},
+		{
+			name: "示例9",
+			args: args{
+				nums: []int{1, 2, 3},
+			},
+			want: []int{1, 4, 9},
+		},
+		{
+			name: "示例10",
+			args: args{
+				nums: []int{-3, -2, -1},
+			},
+			want: []int{1, 4, 9},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
