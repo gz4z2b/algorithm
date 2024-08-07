@@ -13,5 +13,6 @@ func TestPoint(t *testing.T) {
 	b := make([]int, len(a))
 	copy(b, a)
 	a[0] = 2
+	// test
 	t.Log(b[0])
 }
