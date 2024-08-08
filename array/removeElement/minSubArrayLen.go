@@ -19,8 +19,8 @@ func minSubArrayLen(target int, nums []int) int {
 			if subLenth < result {
 				result = subLenth
 			}
-			slow++
 			sum -= nums[slow]
+			slow++
 		}
 
 	}
