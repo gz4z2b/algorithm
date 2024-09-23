@@ -38,5 +38,5 @@ func NewTestObj() baseInterface {
 func Test_obj(t *testing.T) {
 	test := NewTestObj()
 	test.SetName("abc")
-	t.Log(test.Name)
+	// t.Log(test.Name)
 }
